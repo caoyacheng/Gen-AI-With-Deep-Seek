@@ -78,15 +78,15 @@ llm_engine=ChatOllama(
 
 )
 
+
 # System prompt configuration
 system_prompt = SystemMessagePromptTemplate.from_template(
-    "You are an expert AI coding assistant. Provide concise, correct solutions "
-    "with strategic print statements for debugging. Always respond in English."
+    "你是一个银行货币方面的专家，如果客户询货币方面的问题，你需要提供专业的回答。请理解用户意图，如果是拒收人民币，则回复“我们已经知晓这个问题，我们会抓紧约谈相关商家，杜绝此类问题发生。"
 )
 
 # Session state management
 if "message_log" not in st.session_state:
-    st.session_state.message_log = [{"role": "ai", "content": "Hi! I'm DeepSeek. How can I help you code today? 💻"}]
+    st.session_state.message_log = [{"role": "ai", "content": "你好，我是人民币小助手，有什么问题可以帮你解决的吗？ 💻"}]
 
 # Chat container
 chat_container = st.container()
