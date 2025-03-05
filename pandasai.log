@@ -1,0 +1,1490 @@
+2025-03-05 17:58:50 [INFO] Question: What is the correlation between age and cholesterol?
+2025-03-05 17:58:50 [INFO] Running PandaAI with local LLM...
+2025-03-05 17:58:50 [INFO] Prompt ID: e7ac658f-1400-47cb-a4f7-c720bf93efe9
+2025-03-05 17:58:50 [INFO] Generating new code...
+2025-03-05 17:58:50 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the correlation between age and cholesterol?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 17:58:51 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 17:58:51 [INFO] Retrying request to /chat/completions in 0.472675 seconds
+2025-03-05 17:58:53 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 17:58:53 [INFO] Retrying request to /chat/completions in 0.962293 seconds
+2025-03-05 17:58:55 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 17:58:55 [INFO] An error occurred during code generation: Error code: 502
+2025-03-05 17:58:55 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 34, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/llm/base.py", line 172, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 45, in call
+    return self.chat_completion(self.last_prompt, memory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 36, in chat_completion
+    response = self.client.create(**params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 879, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1296, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 973, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1077, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 502
+
+2025-03-05 18:01:06 [INFO] Question: What is the correlation between age and cholesterol?
+2025-03-05 18:01:06 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:01:06 [INFO] Prompt ID: c57f8641-b739-4893-a841-220bec951f59
+2025-03-05 18:01:06 [INFO] Generating new code...
+2025-03-05 18:01:06 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the correlation between age and cholesterol?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:01:07 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:01:07 [INFO] Retrying request to /chat/completions in 0.478303 seconds
+2025-03-05 18:01:09 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:01:09 [INFO] Retrying request to /chat/completions in 0.781756 seconds
+2025-03-05 18:01:11 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:01:11 [INFO] An error occurred during code generation: Error code: 502
+2025-03-05 18:01:11 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 34, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/llm/base.py", line 172, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 45, in call
+    return self.chat_completion(self.last_prompt, memory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 36, in chat_completion
+    response = self.client.create(**params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 879, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1296, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 973, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1077, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 502
+
+2025-03-05 18:01:35 [INFO] Question: What is the correlation between age and cholesterol?
+2025-03-05 18:01:35 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:01:35 [INFO] Prompt ID: d9c91516-aa39-43e1-ba9f-4a560f52a8f2
+2025-03-05 18:01:35 [INFO] Generating new code...
+2025-03-05 18:01:35 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the correlation between age and cholesterol?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:01:36 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:01:36 [INFO] Retrying request to /chat/completions in 0.427123 seconds
+2025-03-05 18:01:38 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:01:38 [INFO] Retrying request to /chat/completions in 0.876984 seconds
+2025-03-05 18:01:40 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:01:40 [INFO] An error occurred during code generation: Error code: 502
+2025-03-05 18:01:40 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 34, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/llm/base.py", line 172, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 45, in call
+    return self.chat_completion(self.last_prompt, memory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 36, in chat_completion
+    response = self.client.create(**params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 879, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1296, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 973, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1077, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 502
+
+2025-03-05 18:01:54 [INFO] Question: What is the correlation between age and cholesterol?
+2025-03-05 18:01:54 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:01:54 [INFO] Prompt ID: 56182551-f9c6-4f18-abdc-311590129b6a
+2025-03-05 18:01:54 [INFO] Generating new code...
+2025-03-05 18:01:54 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the correlation between age and cholesterol?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:01:54 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-03-05 18:01:54 [INFO] An error occurred during code generation: Error code: 404 - {'error': {'message': 'model "codellama" not found, try pulling it first', 'type': 'api_error', 'param': None, 'code': None}}
+2025-03-05 18:01:54 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 34, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/llm/base.py", line 172, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 45, in call
+    return self.chat_completion(self.last_prompt, memory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 36, in chat_completion
+    response = self.client.create(**params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 879, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1296, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 973, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1077, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: Error code: 404 - {'error': {'message': 'model "codellama" not found, try pulling it first', 'type': 'api_error', 'param': None, 'code': None}}
+
+2025-03-05 18:02:18 [INFO] Question: What is the correlation between age and cholesterol?
+2025-03-05 18:02:18 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:02:18 [INFO] Prompt ID: e26bf8fd-5d10-4126-a7ab-680fc1e75e32
+2025-03-05 18:02:18 [INFO] Generating new code...
+2025-03-05 18:02:18 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the correlation between age and cholesterol?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:02:24 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:02:24 [INFO] Code Generated:
+import pandas as pd
+from duckdb import connect
+
+def execute_sql_query(sql_query):
+    con = connect("table_heart.csv")
+    df = con.execute(sql_query).df()
+    return df
+
+# TODO: Write your code to generate result here
+result = {"type": "chart", "value": "temperature_chart.png"}
+2025-03-05 18:02:24 [INFO] Validating code requirements...
+2025-03-05 18:02:24 [INFO] An error occurred during code generation: The code must execute SQL queries using the `execute_sql_query` function, which is already defined!
+2025-03-05 18:02:24 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 38, in generate_code
+    return self.validate_and_clean_code(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 52, in validate_and_clean_code
+    if not self._code_validator.validate(code):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/code_validation.py", line 63, in validate
+    raise ExecuteSQLQueryNotUsed(
+pandasai.exceptions.ExecuteSQLQueryNotUsed: The code must execute SQL queries using the `execute_sql_query` function, which is already defined!
+
+2025-03-05 18:07:55 [INFO] Question: What is the correlation between age and cholesterol?
+2025-03-05 18:07:55 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:07:55 [INFO] Prompt ID: 6084c2be-862d-499d-979e-68d123654794
+2025-03-05 18:07:55 [INFO] Generating new code...
+2025-03-05 18:07:55 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the correlation between age and cholesterol?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:08:00 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:08:00 [INFO] Code Generated:
+import pandas as pd
+
+# Execute SQL Query to fetch data
+data = execute_sql_query(
+    "SELECT AVG(Cholesterol) AS AvgCholesterol, COUNT(*) AS Count FROM table_heart GROUP BY Age"
+)
+
+# Create a new DataFrame to store the results
+result = pd.DataFrame()
+
+# Compute the correlation between age and cholesterol
+result["Age"] = data['Age']
+result["AvgCholesterol"] = data['AvgCholesterol']
+result["Correlation"] = result["AvgCholesterol"].corr(result["Age"])
+
+# Return the correlation coefficient (R2 value)
+print(f"Correlation between age and cholesterol: {result.Correlation}")
+2025-03-05 18:08:00 [INFO] Validating code requirements...
+2025-03-05 18:08:00 [INFO] Code validation successful.
+2025-03-05 18:08:00 [INFO] Cleaning the generated code...
+2025-03-05 18:08:01 [INFO] An error occurred during code generation: Code execution failed
+2025-03-05 18:08:01 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 3, in <module>
+NameError: name 'execute_sql_query' is not defined
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 38, in generate_code
+    return self.validate_and_clean_code(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 58, in validate_and_clean_code
+    return self._code_cleaner.clean_code(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/code_cleaning.py", line 211, in clean_code
+    self.extract_fix_dataframe_redeclarations(node, clean_code_lines)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/code_cleaning.py", line 123, in extract_fix_dataframe_redeclarations
+    env = code_executor.execute(code)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+2025-03-05 18:09:04 [INFO] Question: 最大age是多少?
+2025-03-05 18:09:04 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:09:04 [INFO] Prompt ID: b82cf8bf-cb82-49b8-a971-7314dd4012c2
+2025-03-05 18:09:04 [INFO] Generating new code...
+2025-03-05 18:09:04 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ 最大age是多少?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:09:10 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:09:10 [INFO] Code Generated:
+import pandas as pd
+
+result = {}
+ages = execute_sql_query("SELECT Age FROM table_heart ORDER BY Age DESC")
+age = ages.iloc[0,'Age']
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:10 [INFO] Validating code requirements...
+2025-03-05 18:09:10 [INFO] Code validation successful.
+2025-03-05 18:09:10 [INFO] Cleaning the generated code...
+2025-03-05 18:09:10 [INFO] Executing code: import pandas as pd
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages.iloc[0, 'Age']
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:10 [INFO] Retrying execution (1/3)...
+2025-03-05 18:09:10 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 966, in _validate_tuple_indexer
+    self._validate_key(k, i)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1614, in _validate_key
+    raise ValueError(f"Can only index by location with a [{self._valid_types}]")
+ValueError: Can only index by location with a [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 4, in <module>
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1184, in __getitem__
+    return self._getitem_tuple(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1690, in _getitem_tuple
+    tup = self._validate_tuple_indexer(tup)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 968, in _validate_tuple_indexer
+    raise ValueError(
+ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+2025-03-05 18:09:10 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+The user asked the following question:
+### QUERY
+ 最大age是多少?
+
+You generated the following Python code:
+import pandas as pd
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages.iloc[0, 'Age']
+result['type'] = 'number'
+result['value'] = age
+print(result)
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 966, in _validate_tuple_indexer
+    self._validate_key(k, i)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1614, in _validate_key
+    raise ValueError(f"Can only index by location with a [{self._valid_types}]")
+ValueError: Can only index by location with a [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 4, in <module>
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1184, in __getitem__
+    return self._getitem_tuple(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1690, in _getitem_tuple
+    tup = self._validate_tuple_indexer(tup)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 968, in _validate_tuple_indexer
+    raise ValueError(
+ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2025-03-05 18:09:15 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:09:15 [INFO] Code Generated:
+import pandas as pd
+
+result = {}
+ages = execute_sql_query("SELECT Age FROM table_heart ORDER BY Age DESC")
+age = ages.iloc[0, 'Age']
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:15 [INFO] Validating code requirements...
+2025-03-05 18:09:15 [INFO] Code validation successful.
+2025-03-05 18:09:15 [INFO] Cleaning the generated code...
+2025-03-05 18:09:15 [INFO] Executing code: import pandas as pd
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages.iloc[0, 'Age']
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:15 [INFO] Retrying execution (2/3)...
+2025-03-05 18:09:15 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 966, in _validate_tuple_indexer
+    self._validate_key(k, i)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1614, in _validate_key
+    raise ValueError(f"Can only index by location with a [{self._valid_types}]")
+ValueError: Can only index by location with a [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 4, in <module>
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1184, in __getitem__
+    return self._getitem_tuple(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1690, in _getitem_tuple
+    tup = self._validate_tuple_indexer(tup)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 968, in _validate_tuple_indexer
+    raise ValueError(
+ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+2025-03-05 18:09:15 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+The user asked the following question:
+### QUERY
+ 最大age是多少?
+
+You generated the following Python code:
+import pandas as pd
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages.iloc[0, 'Age']
+result['type'] = 'number'
+result['value'] = age
+print(result)
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 966, in _validate_tuple_indexer
+    self._validate_key(k, i)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1614, in _validate_key
+    raise ValueError(f"Can only index by location with a [{self._valid_types}]")
+ValueError: Can only index by location with a [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 4, in <module>
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1184, in __getitem__
+    return self._getitem_tuple(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 1690, in _getitem_tuple
+    tup = self._validate_tuple_indexer(tup)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexing.py", line 968, in _validate_tuple_indexer
+    raise ValueError(
+ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2025-03-05 18:09:19 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:09:19 [INFO] Code Generated:
+import pandas as pd
+from pandasai import execute_sql_query
+
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages[0]
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:19 [INFO] Validating code requirements...
+2025-03-05 18:09:19 [INFO] Code validation successful.
+2025-03-05 18:09:19 [INFO] Cleaning the generated code...
+2025-03-05 18:09:19 [INFO] Executing code: import pandas as pd
+from pandasai import execute_sql_query
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages[0]
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:19 [INFO] Retrying execution (3/3)...
+2025-03-05 18:09:19 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+ImportError: cannot import name 'execute_sql_query' from 'pandasai' (/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/__init__.py)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+2025-03-05 18:09:19 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+The user asked the following question:
+### QUERY
+ 最大age是多少?
+
+You generated the following Python code:
+import pandas as pd
+from pandasai import execute_sql_query
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages[0]
+result['type'] = 'number'
+result['value'] = age
+print(result)
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+ImportError: cannot import name 'execute_sql_query' from 'pandasai' (/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/__init__.py)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2025-03-05 18:09:24 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:09:24 [INFO] Code Generated:
+import pandas as pd
+from pandasai.core.sqlalchemy import execute_sql_query
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages[0]
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:24 [INFO] Validating code requirements...
+2025-03-05 18:09:24 [INFO] Code validation successful.
+2025-03-05 18:09:25 [INFO] Cleaning the generated code...
+2025-03-05 18:09:25 [INFO] Executing code: import pandas as pd
+from pandasai.core.sqlalchemy import execute_sql_query
+result = {}
+ages = execute_sql_query('SELECT Age FROM table_heart ORDER BY Age DESC')
+age = ages[0]
+result['type'] = 'number'
+result['value'] = age
+print(result)
+2025-03-05 18:09:25 [INFO] Max retries reached. Error: Code execution failed
+2025-03-05 18:09:25 [INFO] Processing failed with error: Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+ModuleNotFoundError: No module named 'pandasai.core.sqlalchemy'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 250, in _process_query
+    result = self.execute_with_retries(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+2025-03-05 18:10:01 [INFO] Question: 最大age是多少?
+2025-03-05 18:10:01 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:10:01 [INFO] Prompt ID: 8672ebcd-4043-4bf3-af94-7cb458a73743
+2025-03-05 18:10:01 [INFO] Generating new code...
+2025-03-05 18:10:01 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ 最大age是多少?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:10:05 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:10:05 [INFO] Code Generated:
+import pandas as pd
+
+def get_max_age(table_name='table_heart'):
+    df = execute_sql_query(f"SELECT Age FROM {table_name} ORDER BY Age DESC LIMIT 1")
+    result = { "type": "number", "value": df.values[0][0] }
+    return result
+2025-03-05 18:10:05 [INFO] Validating code requirements...
+2025-03-05 18:10:05 [INFO] Code validation successful.
+2025-03-05 18:10:05 [INFO] Cleaning the generated code...
+2025-03-05 18:10:05 [INFO] Executing code: import pandas as pd
+
+
+def get_max_age(table_name='table_heart'):
+    df = execute_sql_query(f'SELECT Age FROM {table_name} ORDER BY Age DESC LIMIT 1')
+    result = {'type': 'number', 'value': df.values[0][0]}
+    return result
+2025-03-05 18:10:29 [INFO] Question: 最大age是多少?
+2025-03-05 18:10:29 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:10:29 [INFO] Prompt ID: 8d2ee67f-84d7-48d4-be85-8b76e0753ff1
+2025-03-05 18:10:29 [INFO] Generating new code...
+2025-03-05 18:10:29 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ 最大age是多少?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:10:31 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:10:31 [INFO] Code Generated:
+result = execute_sql_query("""select max(Age) as MaxAge from table_heart;""")
+
+print (f'The maximum age is {result["Max Age"].iloc[0]}')
+2025-03-05 18:10:31 [INFO] Validating code requirements...
+2025-03-05 18:10:31 [INFO] Code validation successful.
+2025-03-05 18:10:31 [INFO] Cleaning the generated code...
+2025-03-05 18:10:31 [INFO] Executing code: result = execute_sql_query('select max(Age) as MaxAge from table_heart')
+print(f"The maximum age is {result['Max Age'].iloc[0]}")
+2025-03-05 18:10:31 [INFO] Retrying execution (1/3)...
+2025-03-05 18:10:31 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Max Age'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Max Age'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+2025-03-05 18:10:31 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+The user asked the following question:
+### QUERY
+ 最大age是多少?
+
+You generated the following Python code:
+result = execute_sql_query('select max(Age) as MaxAge from table_heart')
+print(f"The maximum age is {result['Max Age'].iloc[0]}")
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Max Age'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Max Age'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2025-03-05 18:10:37 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:10:37 [INFO] Code Generated:
+result = execute_sql_query('select max(Age) as MaxAge from table_heart')
+print(f"The maximum age is {result['MaxAge'].iloc[0]}")
+2025-03-05 18:10:37 [INFO] Validating code requirements...
+2025-03-05 18:10:37 [INFO] Code validation successful.
+2025-03-05 18:10:37 [INFO] Cleaning the generated code...
+2025-03-05 18:10:37 [INFO] Executing code: result = execute_sql_query('select max(Age) as MaxAge from table_heart')
+print(f"The maximum age is {result['MaxAge'].iloc[0]}")
+2025-03-05 18:11:32 [INFO] Question: what is the max age?
+2025-03-05 18:11:32 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:11:32 [INFO] Prompt ID: e79e964e-6205-4211-9548-87741d028f55
+2025-03-05 18:11:32 [INFO] Generating new code...
+2025-03-05 18:11:32 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the max age?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:11:35 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:11:35 [INFO] Code Generated:
+import pandas as pd
+from execute_sql_query import execute_sql_query
+
+table = 'table_heart'
+column = 'Age'
+max_age = execute_sql_query(f'''SELECT MAX({column}) FROM {table}''').iloc[0][0]
+
+result = {'type': 'number', 'value': max_age}
+
+print(result)
+2025-03-05 18:11:35 [INFO] Validating code requirements...
+2025-03-05 18:11:35 [INFO] Code validation successful.
+2025-03-05 18:11:35 [INFO] Cleaning the generated code...
+2025-03-05 18:11:35 [INFO] Executing code: import pandas as pd
+from execute_sql_query import execute_sql_query
+table = 'table_heart'
+column = 'Age'
+max_age = execute_sql_query(f'SELECT MAX({column}) FROM {table}').iloc[0][0]
+result = {'type': 'number', 'value': max_age}
+print(result)
+2025-03-05 18:11:35 [INFO] Retrying execution (1/3)...
+2025-03-05 18:11:35 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+ModuleNotFoundError: No module named 'execute_sql_query'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+2025-03-05 18:11:35 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+The user asked the following question:
+### QUERY
+ what is the max age?
+
+You generated the following Python code:
+import pandas as pd
+from execute_sql_query import execute_sql_query
+table = 'table_heart'
+column = 'Age'
+max_age = execute_sql_query(f'SELECT MAX({column}) FROM {table}').iloc[0][0]
+result = {'type': 'number', 'value': max_age}
+print(result)
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+ModuleNotFoundError: No module named 'execute_sql_query'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2025-03-05 18:11:44 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-05 18:11:44 [INFO] Code Generated:
+import pandas as pd
+from sqlalchemy import create_engine
+
+table = 'table_heart'
+column = 'Age'
+
+# Connect to the database using SQLAlchemy
+engine = create_engine('sqlite:///mydatabase.db')
+
+# Execute a query to find the maximum age in the table
+max_age = engine.execute(f'SELECT MAX({column}) FROM {table};').scalar()
+
+# Return the result as a dictionary with 'type' and 'value' keys
+result = {'type': 'number', 'value': max_age}
+print(result)
+2025-03-05 18:11:44 [INFO] Validating code requirements...
+2025-03-05 18:11:44 [INFO] An error occurred during code generation: The code must execute SQL queries using the `execute_sql_query` function, which is already defined!
+2025-03-05 18:11:44 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 29, in execute
+    exec(code, self._environment)
+  File "<string>", line 2, in <module>
+ModuleNotFoundError: No module named 'execute_sql_query'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 169, in execute_with_retries
+    result = self.execute_code(code)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/agent/base.py", line 121, in execute_code
+    return code_executor.execute_and_return_result(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 38, in execute_and_return_result
+    self.execute(code)
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_execution/code_executor.py", line 31, in execute
+    raise CodeExecutionError("Code execution failed") from e
+pandasai.exceptions.CodeExecutionError: Code execution failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 38, in generate_code
+    return self.validate_and_clean_code(code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 52, in validate_and_clean_code
+    if not self._code_validator.validate(code):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/code_validation.py", line 63, in validate
+    raise ExecuteSQLQueryNotUsed(
+pandasai.exceptions.ExecuteSQLQueryNotUsed: The code must execute SQL queries using the `execute_sql_query` function, which is already defined!
+
+2025-03-05 18:13:53 [INFO] Question: what is the max age?
+2025-03-05 18:13:53 [INFO] Running PandaAI with local LLM...
+2025-03-05 18:13:53 [INFO] Prompt ID: ab2dd086-8bcc-4069-a20e-e926afe7b978
+2025-03-05 18:13:53 [INFO] Generating new code...
+2025-03-05 18:13:53 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_heart" dimensions="918x12">
+Age,Sex,ChestPainType,RestingBP,Cholesterol,FastingBS,RestingECG,MaxHR,ExerciseAngina,Oldpeak,ST_Slope,HeartDisease
+40,M,ATA,140,289,0,Normal,172,N,0.0,Up,0
+49,F,NAP,160,180,0,Normal,156,N,1.0,Flat,1
+37,M,ATA,130,283,0,ST,98,N,0.0,Up,0
+48,F,ASY,138,214,0,Normal,108,Y,1.5,Flat,1
+54,M,NAP,150,195,0,Normal,122,N,0.0,Up,0
+</table>
+
+
+</tables>
+
+You are already provided with the following functions that you can call:
+<function>
+def execute_sql_query(sql_query: str) -> pd.Dataframe
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the max age?
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2025-03-05 18:13:54 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:13:54 [INFO] Retrying request to /chat/completions in 0.410843 seconds
+2025-03-05 18:13:56 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:13:56 [INFO] Retrying request to /chat/completions in 0.987722 seconds
+2025-03-05 18:13:58 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 502 Bad Gateway"
+2025-03-05 18:13:58 [INFO] An error occurred during code generation: Error code: 502
+2025-03-05 18:13:58 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/core/code_generation/base.py", line 34, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai/llm/base.py", line 172, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 45, in call
+    return self.chat_completion(self.last_prompt, memory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/pandasai_local/local_llm.py", line 36, in chat_completion
+    response = self.client.create(**params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 879, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1296, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 973, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1062, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1111, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Users/cyc-mac/Gen-AI-With-Deep-Seek-R1/myenv/lib/python3.11/site-packages/openai/_base_client.py", line 1077, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.InternalServerError: Error code: 502
+
