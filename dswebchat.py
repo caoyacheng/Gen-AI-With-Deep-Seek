@@ -1,6 +1,16 @@
 import streamlit as st
 from openai import OpenAI
 
+#这是草稿链的提示词：逐步思考，但每个思考步骤仅保留最低限度的草稿，最多5个词。
+# 自定义系统提示内容（可灵活修改）
+SYSTEM_PROMPT = """
+你是一个货币助手，帮助用户回答货币问题。
+如果遇到拒收人民币的情况：
+1. 要求用户提供商户名称、地址、时间等详细信息
+2. 安抚用户情绪，说明拒收现金是违法行为
+3. 提供维权建议（如向当地人民银行投诉）
+"""
+
 # session state for chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
@@ -16,7 +26,7 @@ def deepseek_chat(api_key: str, messages: list) -> str:
         response = client.chat.completions.create(
             model="deepseek-chat",
             messages=[
-                {"role": "system", "content": "你是一个货币助手，帮助用户回答货币问题，如果遇到投入拒收人民币的问题，请要求用户提供拒收的商户信息，并安抚用户"},
+                {"role": "system", "content": SYSTEM_PROMPT},
                 *messages
             ],
             stream=False
