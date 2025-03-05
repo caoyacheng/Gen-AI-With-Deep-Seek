@@ -65,8 +65,8 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 PROMPT_TEMPLATE = """
-You are an expert research assistant. Use the provided context to answer the query. 
-If unsure, state that you don't know. Be concise and factual (max 3 sentences).
+你是一位专业的研究助手。请使用提供的上下文来回答问题。
+如果不确定答案，请表明你不知道。回答要简洁明了、实事求是（最多三句话）。
 
 Query: {user_query} 
 Context: {document_context} 
@@ -113,14 +113,14 @@ def generate_answer(user_query, context_documents):
 
 
 st.title("📘 DocuMind AI")
-st.markdown("### Your Intelligent Document Assistant")
+st.markdown("### 你的智能文档助手")
 st.markdown("---")
 
 # File Upload Section
 uploaded_pdf = st.file_uploader(
-    "Upload Research Document (PDF)",
+    "上传知识文档 (PDF)",
     type="pdf",
-    help="Select a PDF document for analysis",
+    help="选择一个目标文档",
     accept_multiple_files=False
 
 )
@@ -131,15 +131,15 @@ if uploaded_pdf:
     processed_chunks = chunk_documents(raw_docs)
     index_documents(processed_chunks)
     
-    st.success("✅ Document processed successfully! Ask your questions below.")
+    st.success("✅ 文档处理成功! 接下来你来问吧.")
     
-    user_input = st.chat_input("Enter your question about the document...")
+    user_input = st.chat_input("输入关于这篇文档的问题吧...")
     
     if user_input:
         with st.chat_message("user"):
             st.write(user_input)
         
-        with st.spinner("Analyzing document..."):
+        with st.spinner("分析处理中..."):
             relevant_docs = find_related_documents(user_input)
             ai_response = generate_answer(user_input, relevant_docs)
             

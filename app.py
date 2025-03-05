@@ -45,8 +45,8 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-st.title("🧠 DeepSeek Code Companion")
-st.caption("🚀 Your AI Pair Programmer with Debugging Superpowers")
+st.title("🧠 DeepSeek 本地助手")
+st.caption("🚀 基于ollama的本地助手")
 
 # Sidebar configuration
 with st.sidebar:
@@ -81,12 +81,12 @@ llm_engine=ChatOllama(
 
 # System prompt configuration
 system_prompt = SystemMessagePromptTemplate.from_template(
-    "你是一个银行货币方面的专家，如果客户询货币方面的问题，你需要提供专业的回答。请理解用户意图，如果是拒收人民币，则回复“我们已经知晓这个问题，我们会抓紧约谈相关商家，杜绝此类问题发生。"
+    "你是一个助手，帮助回答问题"
 )
 
 # Session state management
 if "message_log" not in st.session_state:
-    st.session_state.message_log = [{"role": "ai", "content": "你好，我是人民币小助手，有什么问题可以帮你解决的吗？ 💻"}]
+    st.session_state.message_log = [{"role": "ai", "content": "你好，我是小助手，有什么问题可以帮你解决的吗？ 💻"}]
 
 # Chat container
 chat_container = st.container()
@@ -98,7 +98,7 @@ with chat_container:
             st.markdown(message["content"])
 
 # Chat input and processing
-user_query = st.chat_input("Type your coding question here...")
+user_query = st.chat_input("输入你的问题...")
 
 def generate_ai_response(prompt_chain):
     processing_pipeline=prompt_chain | llm_engine | StrOutputParser()
