@@ -31,23 +31,24 @@ def main():
     st.title('💰 货币小助手')
 
     with st.sidebar:
-        st.header("📚 User Guide")
+        st.header("📚 用户手册")
         st.markdown("""
-        ### How to Use
-        1. **Start Chatting**: Type your message in the input box at the bottom of the chat
-        2. **Continue Conversation**: The chatbot remembers your conversation, so you can ask follow-up questions
-        3. **View History**: Scroll up to see your chat history
+        ### 使用方法
+        1. **开始聊天**：在聊天窗口底部的输入框中输入您的消息
+        2. **继续对话**：聊天机器人会记住您的对话内容，因此您可以提出后续问题
+        3. **查看历史记录**：向上滚动以查看您的聊天历史
         
-        ### Tips
-        - Be specific with your questions
-        - Ask follow-up questions for clarification
-        - Use the reset button to start a fresh conversation
+        ### 提示
+        - 提问时请尽量具体
+        - 如有需要，请提出后续问题以进一步澄清
+        - 使用重置按钮开始新的对话
         
-        ### Need Help?
-        If you encounter any issues, try resetting the chat using the button below.
+        ### 需要帮助吗？
+        如果您遇到任何问题，请尝试使用下方的按钮重置聊天。
         """)
 
-        if st.button("Reset Chat"):
+        # 如果点击“重置聊天”按钮
+        if st.button("重置聊天"):
             st.session_state.messages = [
                 {"role": "assistant", "content": "你好，货币小助手有什么可以帮你的吗?"}
             ]
@@ -57,7 +58,7 @@ def main():
         with st.chat_message(message["role"]):
             st.write(message["content"])
 
-    if prompt := st.chat_input("What's on your mind?"):
+    if prompt := st.chat_input("您在想什么呢？"):
         st.session_state.messages.append({"role": "user", "content": prompt})
 
         with st.chat_message("user"):
